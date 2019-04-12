@@ -1,5 +1,6 @@
-import { ExceptionFilter, ArgumentsHost, HttpStatus } from "@nestjs/common";
+import { ExceptionFilter, ArgumentsHost, HttpStatus, HttpException, Catch } from "@nestjs/common";
 
+@Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
     catch(error: any, host: ArgumentsHost) {
         const ctx = host.switchToHttp();

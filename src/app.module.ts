@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 
+import { UserModule } from "./user/user.module";
 import { AppService } from "./app.service";
 import { SharedModule } from "./shared/shared.module";
 import { AppController } from "./app.controller";
@@ -9,10 +10,12 @@ import { ConfigurationService } from "./shared/configuration/configuration.servi
 
 
 
+
 @Module({
   imports: [
     MongooseModule.forRoot(ConfigurationService.connectionString),
     SharedModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
